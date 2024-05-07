@@ -5,7 +5,5 @@ $connect = mysqli_connect('localhost', 'php-sql-cms-sample', 'phpsqlcmssample', 
 
 if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-}else{
-    echo "connection success <br>";
 }
 ?>
