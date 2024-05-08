@@ -7,6 +7,15 @@ include ('includes/header.php');
 
 var_dump($_POST); //Displays submitted form entries in an array. => name, data type, then length
 
+$query = ' SELECT * FROM users WHERE
+email = "' . $_POST['email'] . '"
+AND
+password = "' . $_POST['password'] . '"';
+var_dump($query); // Displays the SQL query along with the user input
+
+$result = mysqli_query($connect, $query);
+$record = mysqli_fetch_assoc($result);
+
 ?>
 
 <div class="container mt-5">
