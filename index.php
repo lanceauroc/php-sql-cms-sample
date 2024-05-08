@@ -4,20 +4,23 @@ include ('includes/database.php');
 include ('includes/functions.php');
 
 include ('includes/header.php');
+
+var_dump($_POST); //Displays submitted form entries in an array. => name, data type, then length
+
 ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form>
+            <form method="post">
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="form1Example1" class="form-control" />
-                    <label class="form-label" for="form1Example1">Email address</label>
+                    <input type="email" id="email" name="email" class="form-control" />
+                    <label class="form-label" for="email">Email address</label>
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="password" id="form1Example2" class="form-control" />
-                    <label class="form-label" for="form1Example2">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" />
+                    <label class="form-label" for="password">Password</label>
                 </div>
 
                 <div class="row mb-4">
