@@ -5,21 +5,17 @@ include ('includes/functions.php');
 
 include ('includes/header.php');
 
-//var_dump($_POST); //Displays submitted form entries in an array. => name, data type, then length
-
 if (isset($_POST['email'])) {
-    $query = ' SELECT * FROM users WHERE
-    email = "' . $_POST['email'] . '"
-    AND
-    password = "' . SHA1($_POST['password']) . '"';
-    var_dump($query); // Displays the SQL query along with the user input
+    if ($stm = $connect->prepare('SELECT * FROM users WHERE email = ? AND password = ? AND active = 1')) {
+        $hashed_pw = SHA1($_POST['password']);
+        $stm->bind_param('ss', $_POST['email'], $hashed_pw);
+        $stm->execute();
 
-    $result = mysqli_query($connect, $query);
+        $result = $stm->get_result();
+        $user = $result->fetch_assoc();
 
-    echo "<br>";
-    var_dump($result); // Displays the query result in an array
-
-    $record = mysqli_fetch_assoc($result);
+        var_dump($user); // Displays the result array
+    }
 }
 
 ?>
