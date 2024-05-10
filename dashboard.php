@@ -5,8 +5,7 @@ include ('includes/functions.php');
 
 include ('includes/header.php');
 
-var_dump($_SESSION); // displays the session contents in an array
-
+secure();
 ?>
 
 <div class="container mt-5">
