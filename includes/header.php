@@ -26,7 +26,7 @@
           <a class="nav-link" href="dashboard.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logout.php">Logout</a>
+          <a class="nav-link <?php echo (!isset($_SESSION['id'])) ? 'invisible' : ''; ?>" href="logout.php">Logout</a>
         </li>
       </ul>
     </div>
