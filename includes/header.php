@@ -23,7 +23,8 @@
           <a class="nav-link active" aria-current="page" href="/php-sql-cms-sample">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="dashboard.php">Dashboard</a>
+          <a class="nav-link" href="dashboard.php">Dashboard </a>
+          <?php echo basename(dirname(__FILE__)); ?> // Retrieves the FILE's directory, not applicable
         </li>
         <li class="nav-item">
           <a class="nav-link <?php echo (!isset($_SESSION['id'])) ? 'invisible' : ''; ?>" href="logout.php">Logout</a>
@@ -32,5 +33,7 @@
     </div>
   </div>
 </nav>
+
+<?php get_message(); ?>
 
 <body>

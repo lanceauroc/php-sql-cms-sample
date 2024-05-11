@@ -19,7 +19,7 @@ if (isset($_POST['email'])) {
             $_SESSION['email'] = $user['email'];
             $_SESSION['username'] = $user['username'];
 
-            // TODO :: give a feedback / welcome message
+            set_message("Hi there! You are now logged in " . $_SESSION['username']);
             header('location: dashboard.php');
             die();
         }
