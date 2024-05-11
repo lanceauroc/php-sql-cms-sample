@@ -20,11 +20,12 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/php-sql-cms-sample">Home</a>
+          <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'index.php' ? 'active' : '';
+          ?>" aria-current="page" href="/php-sql-cms-sample">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="dashboard.php">Dashboard </a>
-          <?php echo basename(dirname(__FILE__)); ?> // Retrieves the FILE's directory, not applicable
+          <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'dashboard.php' ? 'active' : '';
+          ?>" href="dashboard.php">Dashboard </a>
         </li>
         <li class="nav-item">
           <a class="nav-link <?php echo (!isset($_SESSION['id'])) ? 'invisible' : ''; ?>" href="logout.php">Logout</a>
