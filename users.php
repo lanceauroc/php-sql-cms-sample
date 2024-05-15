@@ -34,6 +34,9 @@ if ($stm = $connect->prepare('SELECT * FROM users')) {
                                 <td><?php echo $record['username']; ?></td>
                                 <td><?php echo $record['email']; ?></td>
                                 <td><?php echo $record['active']; ?></td>
+                                <td><a href="users_edit.php?id=<?php echo $record['id']; ?>">Edit</a> |
+                                    <a href="users.php?delete=<?php echo $record['id']; ?>">Delete</a>
+                                </td>
                             </tr>
                         <?php } ?>
                     </table>
