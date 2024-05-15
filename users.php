@@ -12,8 +12,6 @@ if ($stm = $connect->prepare('SELECT * FROM users')) {
 
     $result = $stm->get_result();
 
-    var_dump($result->num_rows);
-
     if ($result->num_rows > 0) {
 
         ?>
@@ -33,7 +31,7 @@ if ($stm = $connect->prepare('SELECT * FROM users')) {
 
                         <?php while ($record = mysqli_fetch_assoc($result)) { ?>
                             <tr>
-                                <!-- TODO:: Records should appear here -->
+                                <?php var_dump($record); // displays the retrieved data array ?>
                             </tr>
 
 
