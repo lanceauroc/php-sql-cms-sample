@@ -11,11 +11,10 @@ if ($stm = $connect->prepare('SELECT * FROM users')) {
     $stm->execute();
 
     $result = $stm->get_result();
-    $user = $result->fetch_assoc();
 
-    var_dump($user);
-    // die();  
-    if ($user) {
+    var_dump($result->num_rows);
+
+    if ($result->num_rows > 0) {
 
         ?>
 
