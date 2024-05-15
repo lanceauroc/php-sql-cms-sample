@@ -40,6 +40,7 @@ if ($stm = $connect->prepare('SELECT * FROM users')) {
                             </tr>
                         <?php } ?>
                     </table>
+                    <a href="users_add.php">Add new user</a>
                 </div>
             </div>
         </div>
