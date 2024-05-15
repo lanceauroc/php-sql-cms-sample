@@ -28,15 +28,14 @@ if ($stm = $connect->prepare('SELECT * FROM users')) {
                             <th>Status</th>
                             <th>Edit | Delete</th>
                         </tr>
-
                         <?php while ($record = mysqli_fetch_assoc($result)) { ?>
                             <tr>
-                                <?php var_dump($record); // displays the retrieved data array ?>
+                                <td><?php echo $record['id']; ?></td>
+                                <td><?php echo $record['username']; ?></td>
+                                <td><?php echo $record['email']; ?></td>
+                                <td><?php echo $record['active']; ?></td>
                             </tr>
-
-
                         <?php } ?>
-
                     </table>
                 </div>
             </div>
