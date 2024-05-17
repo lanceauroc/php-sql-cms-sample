@@ -30,7 +30,14 @@ secure();
                     <label class="form-label" for="password">Password</label>
                 </div>
 
-                <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Sign in</button>
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <select name="active" class="form-select" id="active">
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
+
+                <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Add User</button>
             </form>
         </div>
     </div>
