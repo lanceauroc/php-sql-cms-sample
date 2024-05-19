@@ -2,8 +2,10 @@
 include ('includes/config.php');
 include ('includes/database.php');
 include ('includes/functions.php');
-
+loggedIn();
 include ('includes/header.php');
+
+
 
 if (isset($_POST['email'])) {
     if ($stm = $connect->prepare('SELECT * FROM users WHERE email = ? AND password = ? AND active = 1')) {

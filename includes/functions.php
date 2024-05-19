@@ -8,6 +8,12 @@ function secure()
     }
 }
 
+function loggedIn()
+{
+    if (isset($_SESSION['id'])) {
+        header('location: dashboard.php');
+    }
+}
 
 function set_message($message)
 {
