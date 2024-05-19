@@ -2,10 +2,9 @@
 include ('includes/config.php');
 include ('includes/database.php');
 include ('includes/functions.php');
-
+secure();
 include ('includes/header.php');
 
-secure();
 
 if ($stm = $connect->prepare('SELECT * FROM users')) {
     $stm->execute();
