@@ -11,19 +11,10 @@ if (isset($_POST['username'])) {
         $stm->bind_param('ssss', $_POST['username'], $_POST['email'], $hashed_pw, $_POST['active']);
         $stm->execute();
 
-        set_message("Hi there! You are now logged in, " . $_SESSION['username'] . "!");
+        set_message("A new user, " . $_SESSION['username'] . " has been added.");
         header('location: users.php');
-
-        if ($user) {
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['username'] = $user['username'];
-
-            set_message("Hi there! You are now logged in, " . $_SESSION['username'] . "!");
-            header('location: dashboard.php');
-            die();
-        }
         $stm->close();
+        die();
     } else {
         echo "Statement could not be prepared.";
     }
