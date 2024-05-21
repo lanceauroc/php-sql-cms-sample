@@ -56,8 +56,8 @@ if (isset($_GET['id'])) {
 
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <select name="active" class="form-select" id="active">
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
+                                    <option <?php echo ($user['active']) ? "selected" : ""; ?> value="1">Active</option>
+                                    <option <?php echo ($user['active']) ? "" : "selected"; ?> value="0">Inactive</option>
                                 </select>
                             </div>
 
