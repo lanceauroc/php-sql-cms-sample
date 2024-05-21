@@ -6,13 +6,13 @@ secure();
 include ('includes/header.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['username'])) {
-        if ($stm = $connect->prepare('INSERT INTO users(username, email, password, active) VALUES (?, ?, ?, ?)')) {
+    if (isset($_POST['username']) && isset($_GET['id'])) {
+        if ($stm = $connect->prepare('UPDATE users SET username = ?, email = ?, password = ?, active = ? WHERE id = ?')) {
             $hashed_pw = SHA1($_POST['password']);
-            $stm->bind_param('ssss', $_POST['username'], $_POST['email'], $hashed_pw, $_POST['active']);
+            $stm->bind_param('ssssi', $_POST['username'], $_POST['email'], $hashed_pw, $_POST['active'], $_GET['id']);
             $stm->execute();
 
-            set_message("A new user, " . $_POST['username'] . ", has been added.");
+            set_message("The details for user " . $_POST['username'] . " have been updated.");
             header('Location: users.php');
             $stm->close();
             die();
