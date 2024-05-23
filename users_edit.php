@@ -12,7 +12,7 @@ if (isset($_POST['username'])) {
 
         $stm->close();
 
-        // You may add some extra validation for old password, new password
+        // TODO::You may add some extra validation for old password, new password
         if (isset($_POST['password'])) {
             if ($stm = $connect->prepare('UPDATE users set password = ? WHERE id = ?')) {
                 $hashed_pw = SHA1($_POST['password']);

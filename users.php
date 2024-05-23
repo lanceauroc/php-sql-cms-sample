@@ -5,6 +5,20 @@ include ('includes/functions.php');
 secure();
 include ('includes/header.php');
 
+if (isset($_GET['delete'])) { //TODO:: Implement a softDelete feature instead of actually deleting
+    if ($stm = $connect->prepare('INSERT INTO users(username,email,password,active) VALUES (?,?,?,?)')) {
+        $hashed_pw = SHA1($_POST['password']);
+        $stm->bind_param('ssss', $_POST['username'], $_POST['email'], $hashed_pw, $_POST['active']);
+        $stm->execute();
+
+        set_message("A new user, " . $_SESSION['username'] . " has been added.");
+        header('location: users.php');
+        $stm->close();
+        die();
+    } else {
+        echo "Statement could not be prepared.";
+    }
+}
 
 if ($stm = $connect->prepare('SELECT * FROM users')) {
     $stm->execute();
