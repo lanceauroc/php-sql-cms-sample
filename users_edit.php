@@ -10,7 +10,7 @@ if (isset($_POST['username'])) {
         $stm->bind_param('sssi', $_POST['username'], $_POST['email'], $_POST['active'], $_GET['id']);
         $stm->execute();
 
-        set_message("The details of user " . $_SESSION['username'] . " has been updated.");
+        set_message("The details of user " . $_POST['username'] . " has been updated.");
         header('location: users.php');
         $stm->close();
         die();
