@@ -6,8 +6,8 @@ secure();
 include ('includes/header.php');
 
 if (isset($_POST['username'])) {
-    if ($stm = $connect->prepare('UPDATE users set (username,email,active) VALUES (?,?,?)')) {
-        $stm->bind_param('sss', $_POST['username'], $_POST['email'], $_POST['active']);
+    if ($stm = $connect->prepare('UPDATE users set username = ?,email = ?,active = ? WHERE id = ?')) {
+        $stm->bind_param('sssi', $_POST['username'], $_POST['email'], $_POST['active'], $_GET['id']);
         $stm->execute();
 
         set_message("The details of user " . $_SESSION['username'] . " has been updated.");
