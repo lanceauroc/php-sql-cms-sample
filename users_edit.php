@@ -6,12 +6,11 @@ secure();
 include ('includes/header.php');
 
 if (isset($_POST['username'])) {
-    if ($stm = $connect->prepare('INSERT INTO users(username,email,password,active) VALUES (?,?,?,?)')) {
-        $hashed_pw = SHA1($_POST['password']);
-        $stm->bind_param('ssss', $_POST['username'], $_POST['email'], $hashed_pw, $_POST['active']);
+    if ($stm = $connect->prepare('UPDATE users set (username,email,active) VALUES (?,?,?)')) {
+        $stm->bind_param('sss', $_POST['username'], $_POST['email'], $_POST['active']);
         $stm->execute();
 
-        set_message("A new user, " . $_SESSION['username'] . " has been added.");
+        set_message("The details of user " . $_SESSION['username'] . " has been updated.");
         header('location: users.php');
         $stm->close();
         die();
