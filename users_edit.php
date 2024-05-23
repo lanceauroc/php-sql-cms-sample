@@ -39,13 +39,14 @@ if (isset($_GET['id'])) {
                         <h1 class="display-1">Edit User</h1>
                         <form method="post">
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="text" id="username" name="username" class="form-control"
+                                <input type="text" id="username" name="username" class="form-control active"
                                     value="<?php echo $user['username']; ?>" />
                                 <label class="form-label" for="username">Username</label>
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="email" id="email" name="email" class="form-control" />
+                                <input type="email" id="email" name="email" class="form-control active"
+                                    value="<?php echo $user['email']; ?>" />
                                 <label class="form-label" for="email">Email address</label>
                             </div>
 
