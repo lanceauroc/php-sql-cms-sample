@@ -10,12 +10,27 @@ if (isset($_POST['username'])) {
         $stm->bind_param('sssi', $_POST['username'], $_POST['email'], $_POST['active'], $_GET['id']);
         $stm->execute();
 
+        $stm->close();
+
+        // You may add some extra validation for old password, new password
+        if (isset($_POST['password'])) {
+            if ($stm = $connect->prepare('UPDATE users set password = ? WHERE id = ?')) {
+                $hashed_pw = SHA1($_POST['password']);
+                $stm->bind_param('si', $hashed_pw, $_GET['id']);
+                $stm->execute();
+
+                $stm->close();
+            } else {
+                echo "Password update tatement could not be prepared.";
+            }
+
+        } else {
+            echo "User update statement could not be prepared.";
+        }
+
         set_message("The details of user " . $_POST['username'] . " has been updated.");
         header('location: users.php');
-        $stm->close();
         die();
-    } else {
-        echo "Statement could not be prepared.";
     }
 }
 
