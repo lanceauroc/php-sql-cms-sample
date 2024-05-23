@@ -61,7 +61,7 @@ if (isset($_GET['id'])) {
                                 </select>
                             </div>
 
-                            <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Add User</button>
+                            <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Update User</button>
                         </form>
                     </div>
                 </div>
