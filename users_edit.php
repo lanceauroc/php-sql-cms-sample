@@ -12,8 +12,8 @@ if (isset($_POST['username'])) {
 
         $stm->close();
 
-        // TODO:: fix bug old and new pw are both accepted
-        if (isset($_POST['current_password']) === isset($_POST['new_password'])) {
+        // TODO:: The validation should be if the current password input matches the one from db
+        if (isset($_POST['current_password'])) {
             if ($stm = $connect->prepare('UPDATE users set password = ? WHERE id = ?')) {
                 $hashed_pw = SHA1($_POST['new_password']);
                 $stm->bind_param('si', $hashed_pw, $_GET['id']);
