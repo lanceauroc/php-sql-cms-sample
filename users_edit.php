@@ -12,10 +12,10 @@ if (isset($_POST['username'])) {
 
         $stm->close();
 
-        // TODO::You may add some extra validation for old password, new password
-        if (isset($_POST['password'])) {
+        // TODO:: fix bug old and new pw are both accepted
+        if (isset($_POST['current_password']) === isset($_POST['new_password'])) {
             if ($stm = $connect->prepare('UPDATE users set password = ? WHERE id = ?')) {
-                $hashed_pw = SHA1($_POST['password']);
+                $hashed_pw = SHA1($_POST['new_password']);
                 $stm->bind_param('si', $hashed_pw, $_GET['id']);
                 $stm->execute();
 
@@ -65,8 +65,13 @@ if (isset($_GET['id'])) {
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="password" id="password" name="password" class="form-control" />
-                                <label class="form-label" for="password">Password</label>
+                                <input type="password" id="current_password" name="current_password" class="form-control" />
+                                <label class="form-label" for="current_password">Current Password</label>
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="password" id="new_password" name="new_password" class="form-control" />
+                                <label class="form-label" for="new_password">New Password</label>
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-4">
