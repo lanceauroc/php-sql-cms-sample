@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
 
                 $stm->close();
 
-                if (isset($_POST['current_password']) && $hashed_current_pw == $_GET['password']) {
+                if (isset($_POST['current_password']) && $hashed_current_pw == $user['password']) {
                     if ($stm = $connect->prepare('UPDATE users set password = ? WHERE id = ?')) {
                         $hashed_pw = SHA1($_POST['new_password']);
                         $stm->bind_param('si', $hashed_pw, $_GET['id']);
@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
                     echo "User update statement could not be prepared.";
                 }
 
-                set_message("The details of user " . $_POST['username'] . " has been updated." . $_POST['new_password']);
+                set_message("The details of user " . $_POST['username'] . " has been updated." . $hashed_current_pw . $_POST['new_password']);
                 header('location: users.php');
                 die();
             }
