@@ -12,16 +12,15 @@ if (isset($_POST['username'])) {
 
         $stm->close();
 
-        // TODO:: The validation should be if the current password input matches the one from db
-        if (isset($_POST['current_password'])) {
+        if (isset($_POST['password'])) {
             if ($stm = $connect->prepare('UPDATE users set password = ? WHERE id = ?')) {
-                $hashed_pw = SHA1($_POST['new_password']);
+                $hashed_pw = SHA1($_POST['password']);
                 $stm->bind_param('si', $hashed_pw, $_GET['id']);
                 $stm->execute();
 
                 $stm->close();
             } else {
-                echo "Password update tatement could not be prepared.";
+                echo "Password update statement could not be prepared.";
             }
 
         } else {
@@ -65,13 +64,8 @@ if (isset($_GET['id'])) {
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="password" id="current_password" name="current_password" class="form-control" />
-                                <label class="form-label" for="current_password">Current Password</label>
-                            </div>
-
-                            <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="password" id="new_password" name="new_password" class="form-control" />
-                                <label class="form-label" for="new_password">New Password</label>
+                                <input type="password" id="password" name="password" class="form-control" />
+                                <label class="form-label" for="password">Password</label>
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-4">
