@@ -6,12 +6,11 @@ secure();
 include ('includes/header.php');
 
 if (isset($_GET['delete'])) { //TODO:: Implement a softDelete feature instead of actually deleting
-    if ($stm = $connect->prepare('INSERT INTO users(username,email,password,active) VALUES (?,?,?,?)')) {
-        $hashed_pw = SHA1($_POST['password']);
-        $stm->bind_param('ssss', $_POST['username'], $_POST['email'], $hashed_pw, $_POST['active']);
+    if ($stm = $connect->prepare('DELETE FROM users where id = ?')) {
+        $stm->bind_param('i', $_GET['id']);
         $stm->execute();
 
-        set_message("A new user, " . $_SESSION['username'] . " has been added.");
+        set_message("User, " . $_SESSION['username'] . " has been permanently deleted.");
         header('location: users.php');
         $stm->close();
         die();
