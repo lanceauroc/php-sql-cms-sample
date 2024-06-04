@@ -6,7 +6,7 @@ secure();
 include ('includes/header.php');
 
 if (isset($_GET['delete'])) {
-    if ($stm = $connect->prepare('DELETE FROM posts where id = ?')) { //TODO:: Create table for this on db
+    if ($stm = $connect->prepare('DELETE FROM posts where id = ?')) {
         $stm->bind_param('i', $_GET['id']);
         $stm->execute();
 
@@ -19,7 +19,7 @@ if (isset($_GET['delete'])) {
     }
 }
 
-if ($stm = $connect->prepare('SELECT * FROM users')) {
+if ($stm = $connect->prepare('SELECT * FROM posts')) {
     $stm->execute();
 
     $result = $stm->get_result();
@@ -31,21 +31,21 @@ if ($stm = $connect->prepare('SELECT * FROM users')) {
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="display-1">Users Management</h1>
+                    <h1 class="display-1">Posts Management</h1>
                     <table class="table table-striped table-hover">
                         <tr>
                             <th>Id</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Status</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Content</th>
                             <th>Edit | Delete</th>
                         </tr>
                         <?php while ($record = mysqli_fetch_assoc($result)) { ?>
                             <tr>
                                 <td><?php echo $record['id']; ?></td>
-                                <td><?php echo $record['username']; ?></td>
-                                <td><?php echo $record['email'] ?></td>
-                                <td><?php echo $record['active'] === 1 ? 'Active' : 'Inactive'; ?></td>
+                                <td><?php echo $record['title']; ?></td>
+                                <td><?php echo $record['content'] ?></td>
+                                <td><?php echo $record['author'] ?></td>
                                 <td><a href="users_edit.php?id=<?php echo $record['id']; ?>">Edit</a> |
                                     <a href="users.php?delete=<?php echo $record['id']; ?>">Delete</a>
                                 </td>
