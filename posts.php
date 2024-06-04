@@ -36,8 +36,8 @@ if ($stm = $connect->prepare('SELECT * FROM posts')) {
                         <tr>
                             <th>Id</th>
                             <th>Title</th>
-                            <th>Author</th>
                             <th>Content</th>
+                            <th>Author</th>
                             <th>Edit | Delete</th>
                         </tr>
                         <?php while ($record = mysqli_fetch_assoc($result)) { ?>
@@ -46,8 +46,8 @@ if ($stm = $connect->prepare('SELECT * FROM posts')) {
                                 <td><?php echo $record['title']; ?></td>
                                 <td><?php echo $record['content'] ?></td>
                                 <td><?php echo $record['author'] ?></td>
-                                <td><a href="users_edit.php?id=<?php echo $record['id']; ?>">Edit</a> |
-                                    <a href="users.php?delete=<?php echo $record['id']; ?>">Delete</a>
+                                <td><a href="posts_edit.php?id=<?php echo $record['id']; ?>">Edit</a> |
+                                    <a href="posts.php?delete=<?php echo $record['id']; ?>">Delete</a>
                                 </td>
                             </tr>
                         <?php } ?>
