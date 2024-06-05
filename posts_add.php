@@ -11,7 +11,7 @@ if (isset($_POST['title'])) {
         $stm->execute();
 
         set_message("A new post from Author number, " . $_SESSION['author'] . " has been added.");
-        header('location: users.php');
+        header('location: posts.php');
         $stm->close();
         die();
     } else {
