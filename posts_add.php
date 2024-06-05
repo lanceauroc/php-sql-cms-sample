@@ -5,9 +5,8 @@ include ('includes/functions.php');
 secure();
 include ('includes/header.php');
 
-if (isset($_POST['username'])) {
-    if ($stm = $connect->prepare('INSERT INTO users(username,email,password,active) VALUES (?,?,?,?)')) {
-        $hashed_pw = SHA1($_POST['password']);
+if (isset($_POST['title'])) {
+    if ($stm = $connect->prepare('INSERT INTO posts(title,content,author,date) VALUES (?,?,?,?)')) {
         $stm->bind_param('ssss', $_POST['username'], $_POST['email'], $hashed_pw, $_POST['active']);
         $stm->execute();
 
