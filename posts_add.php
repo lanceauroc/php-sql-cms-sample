@@ -23,7 +23,7 @@ if (isset($_POST['title'])) {
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1 class="display-1">Add User</h1>
+            <h1 class="display-1">Add New Post</h1>
             <form method="post">
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="text" id="username" name="username" class="form-control" />
