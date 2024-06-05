@@ -37,7 +37,7 @@ if ($stm = $connect->prepare('SELECT * FROM posts')) {
                             <th>Id</th>
                             <th>Title</th>
                             <th>Content</th>
-                            <th>Author</th>
+                            <th>Author's ID</th>
                             <th>Edit | Delete</th>
                         </tr>
                         <?php while ($record = mysqli_fetch_assoc($result)) { ?>
