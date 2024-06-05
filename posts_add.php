@@ -7,10 +7,10 @@ include ('includes/header.php');
 
 if (isset($_POST['title'])) {
     if ($stm = $connect->prepare('INSERT INTO posts(title,content,author,date) VALUES (?,?,?,?)')) {
-        $stm->bind_param('ssss', $_POST['username'], $_POST['email'], $hashed_pw, $_POST['active']);
+        $stm->bind_param('ssss', $_POST['title'], $_POST['content'], $_POST['author'], $_POST['date']);
         $stm->execute();
 
-        set_message("A new user, " . $_SESSION['username'] . " has been added.");
+        set_message("A new post from Author number, " . $_SESSION['author'] . " has been added.");
         header('location: users.php');
         $stm->close();
         die();
