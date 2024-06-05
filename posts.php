@@ -52,14 +52,14 @@ if ($stm = $connect->prepare('SELECT * FROM posts')) {
                             </tr>
                         <?php } ?>
                     </table>
-                    <a href="users_add.php">Add new user</a>
+                    <a href="posts_add.php">Add new post</a>
                 </div>
             </div>
         </div>
 
         <?php
     } else {
-        echo "No users found.";
+        echo "No posts found.";
         $stm->close();
     }
 
